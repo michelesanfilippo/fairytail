@@ -1,9 +1,8 @@
 from PIL import Image, ImageDraw, ImageFont
-import os
 
-BG    = (13, 13, 13)
-TITLE = (167, 139, 250)
-BOOK  = (107, 114, 128)
+BG    = (28, 28, 32)       # grigio scuro caldo
+TITLE = (255, 185, 30)     # giallo canarino tendente arancione
+BOOK  = (140, 130, 100)    # grigio caldo per il libro
 
 TITLE_LINES = [
     "███████╗ █████╗ ██╗██████╗ ██╗   ██╗    ████████╗ █████╗ ██╗██╗",
@@ -31,26 +30,41 @@ BOOK_LINES = [
 FONT_PATH   = "C:/Windows/Fonts/consola.ttf"
 FONT_SIZE_T = 13
 FONT_SIZE_B = 13
-PAD         = 16
+PAD_V       = 20   # vertical padding top/bottom
+PAD_H       = 20   # horizontal padding (unused for centering, kept for reference)
 LINE_HT     = 16
 LINE_HB     = 16
+IMG_W       = 900
 
 ft = ImageFont.truetype(FONT_PATH, FONT_SIZE_T)
 fb = ImageFont.truetype(FONT_PATH, FONT_SIZE_B)
 
-height = PAD + len(TITLE_LINES) * LINE_HT + 12 + len(BOOK_LINES) * LINE_HB + PAD
-img = Image.new("RGB", (860, height), BG)
+height = PAD_V + len(TITLE_LINES) * LINE_HT + 14 + len(BOOK_LINES) * LINE_HB + PAD_V
+img = Image.new("RGB", (IMG_W, height), BG)
 d   = ImageDraw.Draw(img)
 
-y = PAD
+def text_width(text, font):
+    bbox = font.getbbox(text)
+    return bbox[2] - bbox[0]
+
+# Draw title lines centered
+y = PAD_V
 for line in TITLE_LINES:
-    d.text((PAD, y), line, font=ft, fill=TITLE)
+    w = text_width(line, ft)
+    x = (IMG_W - w) // 2
+    d.text((x, y), line, font=ft, fill=TITLE)
     y += LINE_HT
-y += 12
+
+y += 14
+
+# Draw book lines centered as a block (center the widest line, align others to same x)
+max_w = max(text_width(l, fb) for l in BOOK_LINES)
+x_block = (IMG_W - max_w) // 2
 for line in BOOK_LINES:
-    d.text((PAD, y), line, font=fb, fill=BOOK)
+    d.text((x_block, y), line, font=fb, fill=BOOK)
     y += LINE_HB
 
-out = os.path.join(os.path.dirname(__file__), "..", "assets", "banner.png")
-img.save(os.path.abspath(out))
-print(f"saved: {os.path.abspath(out)} ({img.size[0]}x{img.size[1]})")
+import os
+out = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets", "banner.png"))
+img.save(out)
+print(f"saved: {out} ({img.size[0]}x{img.size[1]})")
