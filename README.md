@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.png" alt="Fairytail banner" width="860"/>
+<img src="assets/banner.png" alt="Fairytail banner"/>
 
 # Fairytail
 

@@ -34,7 +34,7 @@ PAD_V       = 20   # vertical padding top/bottom
 PAD_H       = 20   # horizontal padding (unused for centering, kept for reference)
 LINE_HT     = 16
 LINE_HB     = 16
-IMG_W       = 900
+IMG_W       = 820
 
 ft = ImageFont.truetype(FONT_PATH, FONT_SIZE_T)
 fb = ImageFont.truetype(FONT_PATH, FONT_SIZE_B)
