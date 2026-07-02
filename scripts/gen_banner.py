@@ -47,12 +47,12 @@ def text_width(text, font):
     bbox = font.getbbox(text)
     return bbox[2] - bbox[0]
 
-# Draw title lines centered
+# Draw title as a block: find widest line, center that, use same x for all
+max_title_w = max(text_width(l, ft) for l in TITLE_LINES)
+x_title = (IMG_W - max_title_w) // 2
 y = PAD_V
 for line in TITLE_LINES:
-    w = text_width(line, ft)
-    x = (IMG_W - w) // 2
-    d.text((x, y), line, font=ft, fill=TITLE)
+    d.text((x_title, y), line, font=ft, fill=TITLE)
     y += LINE_HT
 
 y += 14
