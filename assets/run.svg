@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="720" viewBox="0 0 820 720">
+  <!-- window chrome -->
+  <rect width="820" height="720" rx="8" fill="#0d0d0d"/>
+  <rect width="820" height="36" rx="8" fill="#1a1a2e"/>
+  <rect x="0" y="28" width="820" height="8" fill="#1a1a2e"/>
+  <!-- tab -->
+  <rect x="30" y="6" width="140" height="24" rx="4" fill="#0d0d0d"/>
+  <circle cx="16" cy="18" r="6" fill="#7c3aed"/>
+  <text x="34" y="22" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#ccc">Claude Code</text>
+  <text x="178" y="22" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#888">+</text>
+
+  <!-- content area -->
+  <text x="24" y="64" font-family="'Courier New', monospace" font-size="12" fill="#888">Read 1 file (ctrl+o to expand)</text>
+
+  <!-- ASCII art block -->
+  <text x="24" y="98"  font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">███████╗ █████╗ ██╗██████╗ ██╗   ██╗    ████████╗ █████╗ ██╗██╗</text>
+  <text x="24" y="114" font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">██╔════╝██╔══██╗██║██╔══██╗╚██╗ ██╔╝    ╚══██╔══╝██╔══██╗██║██║</text>
+  <text x="24" y="130" font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">█████╗  ███████║██║██████╔╝ ╚████╔╝        ██║   ███████║██║██║</text>
+  <text x="24" y="146" font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">██╔══╝  ██╔══██║██║██╔══██╗  ╚██╔╝         ██║   ██╔══██║██║██║</text>
+  <text x="24" y="162" font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">██║     ██║  ██║██║██║  ██║   ██║          ██║   ██║  ██║██║███████╗</text>
+  <text x="24" y="178" font-family="'Courier New', monospace" font-size="11" fill="#d0d0d0">╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝</text>
+
+  <text x="60" y="202" font-family="'Courier New', monospace" font-size="10" fill="#aaa">.:+x;:;;++:.....:+:..     ..:x:.....:+x+;:;x+::</text>
+  <text x="60" y="216" font-family="'Courier New', monospace" font-size="10" fill="#aaa">::.  .......:..::. :.;. .::.  ...:....     .;:</text>
+  <text x="60" y="230" font-family="'Courier New', monospace" font-size="10" fill="#aaa">.;;.   ..    ..   : x       ......         .;;</text>
+  <text x="60" y="244" font-family="'Courier New', monospace" font-size="10" fill="#aaa">:.:  ......::.. ..: : x  .:..   ..::......  :.:   </text>
+  <text x="60" y="258" font-family="'Courier New', monospace" font-size="10" fill="#aaa">;.;      .:+++:.. .: x    .:+++:...         ::;</text>
+  <text x="60" y="272" font-family="'Courier New', monospace" font-size="10" fill="#aaa">::;         .....  : x     ......           ;::</text>
+  <text x="60" y="286" font-family="'Courier New', monospace" font-size="10" fill="#aaa">.:;.  ...:;+;.. ..:..: x   ..;.  ...;+;:.... .;:.</text>
+  <text x="60" y="300" font-family="'Courier New', monospace" font-size="10" fill="#aaa">:::.     ...:;;::;;. .: x .  ..;;:::;;:..    .:::</text>
+  <text x="60" y="314" font-family="'Courier New', monospace" font-size="10" fill="#aaa">;::.       ....   :.; x .:   . ...          ::;</text>
+  <text x="60" y="328" font-family="'Courier New', monospace" font-size="10" fill="#aaa">::::::::::::::::::::::;...:::::::::::::::::::::::;;</text>
+
+  <!-- task + auto-pick -->
+  <circle cx="14" cy="364" r="5" fill="#fff"/>
+  <text x="24" y="369" font-family="'Courier New', monospace" font-size="12" fill="#e4e4e4">Task: "write hello world in python on my desktop" — 8 words → trivial band (&lt; 30).</text>
+
+  <text x="24" y="394" font-family="'Courier New', monospace" font-size="11.5" fill="#e4e4e4">auto-pick | leader=sonnet (task=8 words, band=trivial) | workers=sonnet | summary=haiku | maxWorkers=6</text>
+
+  <!-- confirm box -->
+  <rect x="24" y="412" width="82" height="22" rx="4" fill="#1e1e3a" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="34" y="427" font-family="'Courier New', monospace" font-size="11" fill="#e0d0ff">Confirm</text>
+
+  <text x="24" y="460" font-family="'Courier New', monospace" font-size="13" font-weight="bold" fill="#fff">Proceed with these models?</text>
+
+  <!-- options -->
+  <text x="14" y="488" font-family="'Courier New', monospace" font-size="12" fill="#7c3aed">›</text>
+  <text x="24" y="488" font-family="'Courier New', monospace" font-size="12" fill="#7c9fd4">1.  Yes, run as picked</text>
+  <text x="40" y="504" font-family="'Courier New', monospace" font-size="11" fill="#6b7a8d">leader=sonnet | workers=sonnet | summary=haiku (Recommended)</text>
+
+  <text x="24" y="526" font-family="'Courier New', monospace" font-size="12" fill="#e4e4e4">2.  Change leader only</text>
+  <text x="40" y="542" font-family="'Courier New', monospace" font-size="11" fill="#6b7a8d">Override only the leader model tier</text>
+
+  <text x="24" y="564" font-family="'Courier New', monospace" font-size="12" fill="#e4e4e4">3.  Change workers only</text>
+  <text x="40" y="580" font-family="'Courier New', monospace" font-size="11" fill="#6b7a8d">Override only the workers model tier</text>
+
+  <text x="24" y="602" font-family="'Courier New', monospace" font-size="12" fill="#e4e4e4">4.  Change all tiers</text>
+  <text x="40" y="618" font-family="'Courier New', monospace" font-size="11" fill="#6b7a8d">Override leader, workers, and summary</text>
+
+  <!-- footer -->
+  <line x1="0" y1="692" x2="820" y2="692" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="24" y="710" font-family="'Courier New', monospace" font-size="11" fill="#555">Enter to select  ·  ↑/↓ to navigate  ·  Esc to cancel</text>
+</svg>

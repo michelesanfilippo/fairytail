@@ -1,0 +1,67 @@
+███████╗ █████╗ ██╗██████╗ ██╗   ██╗    ████████╗ █████╗ ██╗██╗
+██╔════╝██╔══██╗██║██╔══██╗╚██╗ ██╔╝    ╚══██╔══╝██╔══██╗██║██║
+█████╗  ███████║██║██████╔╝ ╚████╔╝        ██║   ███████║██║██║
+██╔══╝  ██╔══██║██║██╔══██╗  ╚██╔╝         ██║   ██╔══██║██║██║
+██║     ██║  ██║██║██║  ██║   ██║          ██║   ██║  ██║██║███████╗
+╚═╝     ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝   ╚═╝          ╚═╝   ╚═╝  ╚═╝╚═╝╚══════╝
+
+     .:+x;:;;++:.....:+:..     ..:x:.....:+x+;:;x+::
+     ::.  .......:..::. :.;. .::.  ...:....     .;:
+    .;;.   ..    ..   : x       ......         .;;
+    .::                : x                       ;:.
+    :.:  ......::.. ..: : x  .:..   ..::......  :.:
+    ;.;      .:+++:.. .: x    .:+++:...         ::;
+   .::;  .....       .. : x  :..         ...... :::
+   .:;.  ...:;+;.. ..:..: x   ..;.  ...;+;:.... .;:.
+    ;::.       ....   :.; x .:   . ...          ::;
+   ;:..;+:..:;x+:.. .:+.  x   .+:.. ..:+x;:...:++..:;
+   ::::::::::::::::::::::;...:::::::::::::::::::::::;;
+
+        orchestrated multi-agent pipeline  ·  Claude Code CLI
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  /fairytail --leader=fable  <task>
+        │  auto-pick models + confirm
+        ↓
+
+  ╔═════════════════════════════════════════════════════════╗
+  ║  PHASE 1  ·  LEADER                                    ║
+  ║  model: fable / opus    ·    effort: high              ║
+  ╠═════════════════════════════════════════════════════════╣
+  ║  · analyzes task, determines complexity                ║
+  ║  · decomposes into N specialized workers  (max 6)      ║
+  ║  · assigns role, prompt, dependsOn to each worker      ║
+  ╚════════════════════════╦════════════════════════════════╝
+                           ║  spawns N workers in parallel
+             ┌─────────────╬─────────────┐
+             ↓             ↓             ↓
+
+  PHASE 2  ·  WORKERS  (model: sonnet  ·  effort: medium)
+
+  ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+  │  WORKER 1   ├────►│  WORKER 2   ├────►│  WORKER 3   │  · · · ≤ 6
+  │ e.g.backend │◄────┤   e.g. db   │◄────┤  e.g. tests │
+  │model: sonnet│     │model: sonnet│     │model: sonnet│
+  └──────┬──────┘     └──────┬──────┘     └──────┬──────┘
+         │        peer context  (dependsOn)       │
+         └─────────────────┬──────────────────────┘
+                           │  aggregates all artifacts
+                           ↓
+
+  ╔═════════════════════════════════════════════════════════╗
+  ║  PHASE 3  ·  SUMMARY                                   ║
+  ║  model: haiku    ·    effort: low                      ║
+  ╠═════════════════════════════════════════════════════════╣
+  ║  · aggregates all worker artifacts + leader rationale  ║
+  ║  · produces final caveman report                       ║
+  ╚════════════════════════╦════════════════════════════════╝
+                           ↓
+  ┌─────────────────────────────────────────────────────────┐
+  │  REPORT                                                 │
+  │  tl;dr  ·  sections  ·  next steps  ·  warnings        │
+  │  leader=fable    workers=sonnet    summary=haiku        │
+  │  no emoji  ·  no filler  ·  terse but complete         │
+  └─────────────────────────────────────────────────────────┘
+
+  all tiers configurable: CLI flags or fairytail.config.json

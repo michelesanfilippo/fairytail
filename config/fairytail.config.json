@@ -1,0 +1,117 @@
+{
+  "$schema": "./fairytail.config.schema.json",
+  "version": "1.0.0",
+  "models": {
+    "leader": {
+      "default": "fable",
+      "allowed": ["fable", "opus", "sonnet"],
+      "description": "Reasoning tier. High capability, higher cost. Used for plan generation."
+    },
+    "workers": {
+      "default": "sonnet",
+      "allowed": ["sonnet", "haiku", "opus", "fable"],
+      "description": "Execution tier. Balanced cost/capability. Used for parallel sub-tasks."
+    },
+    "summary": {
+      "default": "haiku",
+      "allowed": ["haiku", "sonnet"],
+      "description": "Summary tier. Cheap, fast. Used for final report."
+    }
+  },
+  "autoSelect": {
+    "enabled": true,
+    "scoring": {
+      "domainWeight": 30,
+      "architectureWeight": 25,
+      "scopeWeight": 20,
+      "depthWeight": 15,
+      "wordCountWeight": 10,
+      "architectureKeywords": ["migrate","migration","microservice","distributed","scalab","design","architecture","from scratch","refactor","system","integrate","integration","rewrite","overhaul","greenfield"],
+      "scopeKeywords": ["best way","should i","entire","whole","complete","full","end-to-end","everything","all","comprehensive","production-ready","production ready"]
+    },
+    "bands": {
+      "trivial":  { "min": 0,  "max": 30,  "model": "sonnet" },
+      "standard": { "min": 31, "max": 65,  "model": "opus"   },
+      "complex":  { "min": 66, "max": 100, "model": "fable"  }
+    },
+    "mapping": {
+      "trivial": "sonnet",
+      "standard": "opus",
+      "complex": "fable"
+    }
+  },
+  "orchestration": {
+    "maxWorkers": 6,
+    "allowPeerContext": true,
+    "workerEffort": "medium",
+    "leaderEffort": "high",
+    "summaryEffort": "low"
+  },
+  "style": {
+    "caveman": true,
+    "rules": [
+      "No emoji",
+      "No filler words (sure, great, certainly)",
+      "Skip unnecessary articles/verbs",
+      "Keywords + lists + symbols",
+      "Preserve semantic completeness",
+      "Terse but complete"
+    ]
+  },
+  "grillMe": {
+    "enabled": true,
+    "confidenceThreshold": 75,
+    "maxRounds": 3
+  },
+  "personas": {
+    "enabled": true,
+    "catalog": {
+      "java":      "Senior Java developer, 10y Spring Boot, microservices, design patterns, OOP",
+      "dba":       "Senior DBA, Oracle/Postgres, query optimization, indexing, schema design, migrations",
+      "devops":    "Senior DevOps engineer, Kubernetes, Docker, CI/CD, infrastructure-as-code",
+      "security":  "AppSec engineer, OWASP Top 10, threat modeling, secure coding, dependency CVEs",
+      "frontend":  "Senior frontend developer, React/Vue/Angular, UX-aware, accessibility",
+      "architect": "Solutions architect, distributed systems, scalability, trade-off analysis",
+      "python":    "Senior Python developer, clean code, async, packaging, testing",
+      "mobile":    "Senior mobile developer, iOS/Android, React Native, Flutter",
+      "qa":        "Senior QA engineer, test strategy, automation, edge cases, regression",
+      "data":      "Senior data engineer, pipelines, SQL/NoSQL, analytics, data modeling"
+    },
+    "stackKeywords": {
+      "java":      ["java", "spring", "springboot", "jvm", "maven", "gradle", "hibernate"],
+      "dba":       ["sql", "database", "db", "oracle", "postgres", "mysql", "schema", "query", "table"],
+      "devops":    ["kubernetes", "k8s", "docker", "ci/cd", "jenkins", "pipeline", "deploy", "infra"],
+      "security":  ["security", "auth", "oauth", "jwt", "vuln", "pentest", "owasp", "xss", "injection"],
+      "frontend":  ["react", "vue", "angular", "html", "css", "ui", "frontend", "component", "web"],
+      "architect": ["architecture", "microservice", "distributed", "scalab", "design", "system"],
+      "python":    ["python", "django", "flask", "fastapi", "pip", "pandas", "numpy"],
+      "mobile":    ["ios", "android", "mobile", "swift", "kotlin", "flutter", "react native"],
+      "qa":        ["test", "qa", "quality", "coverage", "regression", "e2e", "unit test"],
+      "data":      ["data", "etl", "pipeline", "analytics", "warehouse", "spark", "kafka"]
+    }
+  },
+  "costEstimate": {
+    "enabled": true,
+    "tokensPerWord": 1.5,
+    "avgWorkerOutputTokens": 800,
+    "pricesPer1kTokens": {
+      "fable":  { "input": 0.015, "output": 0.075 },
+      "opus":   { "input": 0.015, "output": 0.075 },
+      "sonnet": { "input": 0.003, "output": 0.015 },
+      "haiku":  { "input": 0.00025, "output": 0.00125 }
+    }
+  },
+  "planCache": {
+    "enabled": true,
+    "dir": "~/.claude/fairytail/cache",
+    "similarityThreshold": 0.75,
+    "maxEntries": 50,
+    "ttlDays": 30
+  },
+  "output": {
+    "showBanner": true,
+    "streamPhases": true,
+    "saveHistory": false,
+    "historyDir": "~/.claude/fairytail/history"
+  }
+}
