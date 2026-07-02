@@ -34,7 +34,8 @@ Write-Host "target: $target"
 $files = @(
   (Join-Path $target 'skills\fairytail\SKILL.md'),
   (Join-Path $target 'workflows\fairytail.js'),
-  (Join-Path $target 'fairytail\fairytail-ascii.txt')
+  (Join-Path $target 'fairytail\fairytail-ascii.txt'),
+  (Join-Path $target 'fairytail\.banner_shown')
 )
 if (-not $KeepConfig) {
   $files += (Join-Path $target 'fairytail.config.json')

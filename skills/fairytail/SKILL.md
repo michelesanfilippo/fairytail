@@ -24,15 +24,21 @@ Do NOT trigger for single-shot questions, trivial edits, or when user has not as
 
 ## How to execute
 
-### Step 1 — Show banner IMMEDIATELY
+### Step 1 — Show banner (first run only)
 
-FIRST ACTION: read `~/.claude/fairytail/fairytail-ascii.txt` (fallback: `./.claude/fairytail/fairytail-ascii.txt`) and output its contents inside a fenced code block.
+Check for the marker file `~/.claude/fairytail/.banner_shown` (or `./.claude/fairytail/.banner_shown` for project scope) using the Read tool.
 
-STRICT RULES:
-- Zero text before the banner. No "Loading...", no "Here is the banner", no preamble of any kind.
-- Zero text after the banner on the same turn. Move directly to Step 2 silently.
-- If file is missing: output exactly `fairytail: banner not found` and continue. Nothing else.
-- The workflow does NOT print the banner. It has already been shown here.
+**If the marker file does NOT exist (first run):**
+- Read `~/.claude/fairytail/fairytail-ascii.txt` and output its contents inside a fenced code block.
+- STRICT: zero text before the banner, zero text after. No preamble, no commentary.
+- If banner file is missing: output exactly `fairytail: banner not found` and continue.
+- After printing the banner, create the marker file by writing a single character `1` to `~/.claude/fairytail/.banner_shown` using the Write tool. This marks all future runs as non-first.
+
+**If the marker file EXISTS (subsequent runs):**
+- Skip the banner entirely. Do not print it, do not mention it.
+- Proceed directly to Step 2.
+
+The workflow does NOT print the banner under any circumstances.
 
 ### Step 2 — Load config
 

@@ -46,6 +46,7 @@ FILES=(
   "$TARGET/skills/fairytail/SKILL.md"
   "$TARGET/workflows/fairytail.js"
   "$TARGET/fairytail/fairytail-ascii.txt"
+  "$TARGET/fairytail/.banner_shown"
 )
 if [[ $KEEP_CONFIG -eq 0 ]]; then
   FILES+=("$TARGET/fairytail.config.json")
