@@ -10,12 +10,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Fast lane: coverage on ubuntu, uploaded to Codecov
   test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install pytest-cov
+        run: pip install pytest pytest-cov
+
+      - name: Run tests with coverage
+        run: python -m pytest --cov=tests --cov-report=xml --cov-report=term-missing -q
+        env:
+          PYTHONIOENCODING: "utf-8"
+          PYTHONUTF8: "1"
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+  # Matrix: cross-platform smoke run (no coverage upload)
+  matrix:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest, windows-latest]
         python-version: ["3.11", "3.12"]
 
     steps:
@@ -25,8 +52,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Install pytest
+        run: pip install pytest
+
       - name: Run tests
-        run: python -m pytest tests/ -v
+        run: python -m pytest -q
         env:
           PYTHONIOENCODING: "utf-8"
           PYTHONUTF8: "1"

@@ -30,6 +30,8 @@
 **Orchestrated multi-agent pipeline for Claude Code CLI.**
 
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Tests](https://github.com/michelesanfilippo/fairytail/actions/workflows/test.yml/badge.svg)](https://github.com/michelesanfilippo/fairytail/actions/workflows/test.yml)
+[![Coverage](https://codecov.io/gh/michelesanfilippo/fairytail/branch/main/graph/badge.svg)](https://codecov.io/gh/michelesanfilippo/fairytail)
 [![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-red.svg)]()
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-skill--native-purple.svg)]()
 
